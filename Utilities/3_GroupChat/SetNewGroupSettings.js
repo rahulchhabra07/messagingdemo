@@ -8,6 +8,26 @@ global.atob = base64.decode;
 
 import GenerateUUID from '../GenerateUUID'
 
+/*
+GROUP SETTINGS:
+
+- No member limit for any group
+- Anyone can change group name, description and image
+- Admins can ban members from joining again
+- Everyone can see who is online in the group
+- New Members can see chat history
+
+Community Channel:
+- Publicly visible
+- Join to view members and messages
+
+Private Group:
+- Not visible Publicly
+- Members can add more members
+- People can join via link
+
+*/
+
 function SetNewGroupSettings(xmpp, jid) {
   console.log('Setting jid:', jid)
   console.log("SetNewGroupSettings")
