@@ -69,32 +69,23 @@ export default class App extends React.Component {
   }
 
 
-    //Important
+  //Important
+
+  onStartConnect = () => {
+    LoginUser(xmpp)
+    //CreateUser(xmpp, 'miraj', 'rahultesting')
+  }
+
+  onSendMessage = () => {
+    SendPersonalTextMessage(xmpp, "rahul@getassist.app/example", 'test message')
+    SendPersonalMediaMessage(xmpp, "rahul@getassist.app/example", 'test message', 'https://testlink.com')
+  }
+
+  onGroupChat = () => {
+    CreateGroup(xmpp, "test")
+  }
 
 
-
-
-    onStartConnect = () => {
-      LoginUser(xmpp)
-      //CreateUser(xmpp, 'miraj', 'rahultesting')
-    }
-
-    onSendMessage = () => {
-      SendPersonalTextMessage(xmpp, "rahul@getassist.app/example", 'test message')
-      SendPersonalMediaMessage(xmpp, "rahul@getassist.app/example", 'test message', 'https://testlink.com')
-      // const message = xml(
-      //   'message',
-      //   {type: 'chat', to: "admin@getassist.app/example"},
-      //   xml('body', 'test message')
-      // )
-      // xmpp.send(message)
-    }
-
-    onGroupChat = () => {
-      CreateGroup(xmpp, "test")
-    }
-
-  
   render() {
 
     var buttons = (
