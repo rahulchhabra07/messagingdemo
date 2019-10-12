@@ -16,7 +16,13 @@ function HandleReceivedMessage(xmpp, message) {
     const from = message.attrs.from
     const to = message.attrs.to
     const message_body = message.children[2].children[0]
-    // const id = message.attrs.id
+    const stamp = message.children[3].children[0]
+    const id = message.attrs.id
+    console.log(from)
+    console.log(to)
+    console.log(message_body)
+    console.log(stamp)
+    console.log(id)
     stamp = time.datetime()
     // SendMessageReceivedReceipt(xmpp, id, from, stamp)
     // SendMessageReadReceipt(xmpp, id, from, stamp)
@@ -29,6 +35,8 @@ function HandleReceivedMessage(xmpp, message) {
       from,
       to,
       message_body,
+      stamp,
+      id
     }
 }
 
