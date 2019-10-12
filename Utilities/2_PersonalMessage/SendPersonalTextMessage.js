@@ -11,7 +11,7 @@ import GenerateUUID from '../GenerateUUID'
 function SendPersonalTextMessage(xmpp, to, message_body) {
   const message = (
     <message
-        id={GenerateUUID(to, message_body)} 
+        // id={GenerateUUID(to, message_body)} 
         type='chat'
         to={to}>
       <body>{message_body}</body>

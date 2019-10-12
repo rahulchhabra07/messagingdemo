@@ -77,8 +77,8 @@ export default class App extends React.Component {
   }
 
   onSendMessage = () => {
-    SendPersonalTextMessage(xmpp, "admin@getassist.app/example", 'test message')
-    SendPersonalMediaMessage(xmpp, "admin@getassist.app/example", 'test message', 'https://testlink.com')
+    SendPersonalTextMessage(xmpp, "rahul@getassist.app/example", 'test message')
+    SendPersonalMediaMessage(xmpp, "rahul@getassist.app/example", 'test message', 'https://testlink.com')
   }
 
   onGroupChat = () => {
