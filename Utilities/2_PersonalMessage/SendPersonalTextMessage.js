@@ -10,9 +10,11 @@ import GenerateUUID from '../GenerateUUID'
 
 function SendPersonalTextMessage(xmpp, to, message_body) {
   const message = (
-    <message type='chat' to={to}>
+    <message
+        id={GenerateUUID(to, message_body)} 
+        type='chat'
+        to={to}>
       <body>{message_body}</body>
-      // <id>{GenerateUUID(to, message_body)}</id>
     </message>
   )
   xmpp.send(message)

@@ -7,7 +7,7 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-import SendMessageReceivedReceipt from './SendMessageReceivedReceipt'
+import SendMessageReceivedReceipt from '../4_MessageActions/SendMessageReceivedReceipt'
 
 function HandleReceivedMessage(xmpp, message) {
     const from = message.attrs.from

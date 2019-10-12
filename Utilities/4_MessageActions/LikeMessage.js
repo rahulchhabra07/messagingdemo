@@ -8,16 +8,19 @@ global.atob = base64.decode;
 
 import GenerateUUID from '../GenerateUUID'
 
-function SendGroupMessage(xmpp, to, message_body) {
+function LikeMessage(xmpp, to, message_id) {
   const message = (
     <message
-        id={GenerateUUID(to, message_body)}
-        to={to}
-        type='groupchat'>
-      <body>{message_body}</body>
+        type='chat'
+        to={to}>
+      <like>
+        <message_id>{message_id}</message_id>
+        <quantity>1</quantity>
+        <type>0</type>
+      </like>
     </message>
   )
   xmpp.send(message)
 }
 
-export default SendGroupMessage
+export default LikeMessage

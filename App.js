@@ -8,11 +8,13 @@ import CreateUser from './Utilities/0_Register/CreateUser'
 import SendPersonalTextMessage from './Utilities/2_PersonalMessage/SendPersonalTextMessage'
 import SendPersonalMediaMessage from './Utilities/2_PersonalMessage/SendPersonalMediaMessage'
 
-import HandleReceivedMessage from './Utilities/2_PersonalMessage/HandleReceivedMessage'
-import HandleReceivedIQ from './Utilities/2_PersonalMessage/HandleReceivedIQ'
-import HandleReceivedPresence from './Utilities/2_PersonalMessage/HandleReceivedPresence'
+import HandleReceivedMessage from './Utilities/5_HandleReceivedStanzas/HandleReceivedMessage'
+import HandleReceivedIQ from './Utilities/5_HandleReceivedStanzas/HandleReceivedIQ'
+import HandleReceivedPresence from './Utilities/5_HandleReceivedStanzas/HandleReceivedPresence'
 
 import CreateGroup from './Utilities/3_GroupChat/CreateGroup'
+import RequestPublicGroups from './Utilities/3_GroupChat/RequestPublicGroups'
+import RequestGroupMembersList from './Utilities/3_GroupChat/RequestGroupMembersList'
 
 // important
 const {client, xml, jid} = require('@xmpp/client')
@@ -33,7 +35,6 @@ xmpp.on('offline', () => {
 })
 
 xmpp.on('stanza', async (stanza) => {
-  // console.log(stanza)
   if (stanza.is('message')) {
     HandleReceivedMessage(xmpp, stanza)
   }
@@ -41,7 +42,6 @@ xmpp.on('stanza', async (stanza) => {
     HandleReceivedIQ(xmpp, stanza)
   }
   if (stanza.is('presence')) {
-    console.log("Received a Presence!!!!!!")
     HandleReceivedPresence(xmpp, stanza)
   }
   console.log('▶', stanza.toString())
@@ -83,6 +83,8 @@ export default class App extends React.Component {
 
   onGroupChat = () => {
     CreateGroup(xmpp, "test")
+    // RequestPublicGroups(xmpp)
+    RequestGroupMembersList(xmpp, "test@bitspilani.getassist.app")
   }
 
 

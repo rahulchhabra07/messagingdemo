@@ -10,7 +10,6 @@ import SetNewGroupSettings from '../3_GroupChat/SetNewGroupSettings'
 
 function HandleReceivedIQ(xmpp, iq) {
     console.log("Processing IQ")
-    console.log(iq)
     try {
       // Create Group Response
       const type = iq.attrs.type

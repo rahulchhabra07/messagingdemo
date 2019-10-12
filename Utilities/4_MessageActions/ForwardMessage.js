@@ -8,16 +8,17 @@ global.atob = base64.decode;
 
 import GenerateUUID from '../GenerateUUID'
 
-function SendGroupMessage(xmpp, to, message_body) {
+function ForwardMessage(xmpp, to, message_body) {
   const message = (
     <message
         id={GenerateUUID(to, message_body)}
-        to={to}
-        type='groupchat'>
+        type='chat'
+        to={to}>
       <body>{message_body}</body>
+      <isForwarded>True</isForwarded>
     </message>
   )
   xmpp.send(message)
 }
 
-export default SendGroupMessage
+export default ForwardMessage

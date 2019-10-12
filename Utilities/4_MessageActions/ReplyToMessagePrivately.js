@@ -8,16 +8,17 @@ global.atob = base64.decode;
 
 import GenerateUUID from '../GenerateUUID'
 
-function SendGroupMessage(xmpp, to, message_body) {
+function ReplyToMessagePrivately(xmpp, to, message_body, message_id) {
   const message = (
     <message
         id={GenerateUUID(to, message_body)}
-        to={to}
-        type='groupchat'>
+        type='chat'
+        to={to}>
       <body>{message_body}</body>
+      <replyTo>{message_id}</replyTo>
     </message>
   )
   xmpp.send(message)
 }
 
-export default SendGroupMessage
+export default ReplyToMessagePrivately
