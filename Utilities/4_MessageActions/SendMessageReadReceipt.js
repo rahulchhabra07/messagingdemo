@@ -8,15 +8,15 @@ global.atob = base64.decode;
 
 import GenerateUUID from '../GenerateUUID'
 
-function SendMessageReadReceipt(xmpp, to, stamp, message_id) {
+function SendMessageReadReceipt(xmpp, message_id, to, stamp) {
   const message = (
     <message
-        id={GenerateUUID(to, message_body)}
+        id={message_id}
         type='chat'
         to={to}>
       <receipt>
         <type>Read</type>
-        <stamp>stamp</stamp>
+        <stamp>{stamp}</stamp>
         <message_id>{message_id}</message_id>
       </receipt>
     </message>

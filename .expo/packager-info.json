@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 6988,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 2508,
+  "expoServerNgrokUrl": "https://i4-3bx.miraj98.messagingdemo.exp.direct",
+  "packagerNgrokUrl": "https://packager.i4-3bx.miraj98.messagingdemo.exp.direct",
+  "ngrokPid": 2529
 }

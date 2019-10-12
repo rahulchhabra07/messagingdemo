@@ -35,6 +35,7 @@ xmpp.on('offline', () => {
 })
 
 xmpp.on('stanza', async (stanza) => {
+  console.log('▶', stanza.toString())
   if (stanza.is('message')) {
     HandleReceivedMessage(xmpp, stanza)
   }
@@ -44,7 +45,6 @@ xmpp.on('stanza', async (stanza) => {
   if (stanza.is('presence')) {
     HandleReceivedPresence(xmpp, stanza)
   }
-  console.log('▶', stanza.toString())
 })
 
 // Debug
@@ -77,8 +77,8 @@ export default class App extends React.Component {
   }
 
   onSendMessage = () => {
-    SendPersonalTextMessage(xmpp, "rahul@getassist.app/example", 'test message')
-    SendPersonalMediaMessage(xmpp, "rahul@getassist.app/example", 'test message', 'https://testlink.com')
+    SendPersonalTextMessage(xmpp, "admin@getassist.app/example", 'test message')
+    SendPersonalMediaMessage(xmpp, "admin@getassist.app/example", 'test message', 'https://testlink.com')
   }
 
   onGroupChat = () => {

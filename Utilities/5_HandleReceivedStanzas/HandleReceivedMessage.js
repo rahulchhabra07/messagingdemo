@@ -8,13 +8,16 @@ global.btoa = base64.encode;
 global.atob = base64.decode;
 
 import SendMessageReceivedReceipt from '../4_MessageActions/SendMessageReceivedReceipt'
+import SendMessageReadReceipt from '../4_MessageActions/SendMessageReadReceipt'
 
 function HandleReceivedMessage(xmpp, message) {
+    console.log("Processing Message")
     const from = message.attrs.from
     const to = message.attrs.to
-    const id = message.getChild('id').children[0]
+    const id = message.attrs.id
     stamp = time.datetime()
-    // SendMessageReceivedReceipt(xmpp, id, from, stamp)
+    SendMessageReceivedReceipt(xmpp, id, from, stamp)
+    SendMessageReadReceipt(xmpp, id, from, stamp)
     try {
       console.log("link:", message.getChild('link').children[0])
     } catch (err) {
