@@ -9,6 +9,7 @@ global.atob = base64.decode;
 
 import SendMessageReceivedReceipt from '../4_MessageActions/SendMessageReceivedReceipt'
 import SendMessageReadReceipt from '../4_MessageActions/SendMessageReadReceipt'
+import ProcessMessageObject from '../4_MessageActions/ProcessMessageObject'
 
 function HandleReceivedMessage(xmpp, message) {
     console.log("Processing Message")
@@ -23,21 +24,12 @@ function HandleReceivedMessage(xmpp, message) {
     console.log(message_body)
     console.log(stamp)
     console.log(id)
-    stamp = time.datetime()
-    // SendMessageReceivedReceipt(xmpp, id, from, stamp)
-    // SendMessageReadReceipt(xmpp, id, from, stamp)
-    try {
-      console.log("link:", message.getChild('link').children[0])
-    } catch (err) {
-      console.log("No media link")
-    }
-    return {
-      from,
-      to,
-      message_body,
-      stamp,
-      id
-    }
+    receipt_stamp = time.datetime()
+    // SendMessageReceivedReceipt(xmpp, id, from, receipt_stamp)
+    // SendMessageReadReceipt(xmpp, id, from, receipt_stamp)
+    const return_object = ProcessMessageObject(message)
+    console.log(return_object)
+    return return_object
 }
 
 export default HandleReceivedMessage

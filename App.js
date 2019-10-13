@@ -16,6 +16,8 @@ import CreateGroup from './Utilities/3_GroupChat/CreateGroup'
 import RequestPublicGroups from './Utilities/3_GroupChat/RequestPublicGroups'
 import RequestGroupMembersList from './Utilities/3_GroupChat/RequestGroupMembersList'
 
+import ProcessMessageObject from './Utilities/4_MessageActions/ProcessMessageObject'
+
 // important
 const {client, xml, jid} = require('@xmpp/client')
 const time = require('@xmpp/time')
@@ -55,7 +57,10 @@ xmpp.on('input', (input) => {
   console.debug('⮈', input)
 })
 xmpp.on('output', (output) => {
-  console.debug('⮊', output)
+  console.debug('⮊', output.toString('utf8'))
+  if (output.name === 'message') {
+    console.log("processedmessage: ", ProcessMessageObject(output))
+  }
 })
 
 export default class App extends React.Component {
@@ -77,7 +82,7 @@ export default class App extends React.Component {
   }
 
   onSendMessage = () => {
-    SendPersonalTextMessage(xmpp, "rahul@getassist.app/example", 'test message')
+    SendPersonalTextMessage(xmpp, "admin@getassist.app/example", 'test message' + time.datetime())
     // SendPersonalMediaMessage(xmpp, "rahul@getassist.app/example", 'test message', 'https://testlink.com')
   }
 
