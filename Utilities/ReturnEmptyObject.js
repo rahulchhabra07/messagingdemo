@@ -36,7 +36,8 @@ function ReturnEmptyObject(module_name) {
       return {
         isReceipt: false,
         receipt_type: 'None',
-        receipt_timestamp: "-1"
+        receipt_timestamp: "-1",
+        receiptOfMessageID: '-1'
       }
   }
 }

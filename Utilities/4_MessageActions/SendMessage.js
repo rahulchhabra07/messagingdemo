@@ -41,10 +41,13 @@ function SendPersonalTextMessage(xmpp, basic, media, reply, forwarded, like, rec
         <isReceipt>{receipt.isReceipt}</isReceipt>
         <receipt_type>{receipt.receipt_type}</receipt_type>
         <receipt_timestamp>{receipt.receipt_timestamp}</receipt_timestamp>
+        <receiptOfMessageID>{receipt.receipt_of_message_id}</receiptOfMessageID>
       </receipt>
     </message>
   )
+  // console.log(message)
   xmpp.send(message)
+  console.log("Message sent")
 }
 
 export default SendPersonalTextMessage

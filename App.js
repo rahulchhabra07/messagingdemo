@@ -26,7 +26,9 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-const xmpp = CreateClient('rahul', 'rahultesting')
+var xmpp; = CreateClient('rahul', 'rahultesting')
+const xmppa = CreateClient('admin', 'admintesting')
+const xmppr = CreateClient('rahul', 'rahultesting')
 
 xmpp.on('error', (err) => {
   console.error('❌', err.toString())
@@ -57,6 +59,7 @@ xmpp.on('input', (input) => {
   console.debug('⮈', input)
 })
 xmpp.on('output', (output) => {
+  console.log("Here is the output")
   console.debug('⮊', output.toString('utf8'))
   if (output.name === 'message') {
     console.log("processedmessage: ", ProcessMessageObject(output))
@@ -76,13 +79,19 @@ export default class App extends React.Component {
 
   //Important
 
-  onStartConnect = () => {
+  onStartConnect = (name = 'admin') => {
+    if (name === 'admin') {
+      xmpp = CreateClient('admin', 'admintesting')
+    }
+    if (name === 'rahul') {
+      xmpp = CreateClient('rahul', 'rahultesting')
+    }
     LoginUser(xmpp)
     //CreateUser(xmpp, 'miraj', 'rahultesting')
   }
 
   onSendMessage = () => {
-    SendPersonalTextMessage(xmpp, "admin@getassist.app/example", 'test message' + time.datetime())
+    SendPersonalTextMessage(xmpp, "admin@getassist.app/example", 'It is')// + time.datetime())
     // SendPersonalMediaMessage(xmpp, "rahul@getassist.app/example", 'test message', 'https://testlink.com')
   }
 
@@ -98,10 +107,17 @@ export default class App extends React.Component {
     var buttons = (
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() => this.onStartConnect()}
+          onPress={() => this.onStartConnect('admin')}
           style={styles.button}>
           <Text style={styles.buttonText}>
-              Connect to XMPP server (login)
+              Login as Admin
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.onStartConnect('rahul')}
+          style={styles.button}>
+          <Text style={styles.buttonText}>
+              Login as Rahul
           </Text>
         </TouchableHighlight>
         <TouchableHighlight
