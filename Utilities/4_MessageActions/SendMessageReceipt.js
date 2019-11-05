@@ -22,7 +22,8 @@ function SendMessageReceipt(xmpp, to, receipt_type, receipt_of_message_id) {
   receipt.receipt_type = receipt_type
   receipt.receipt_timestamp = time.datetime()
   receipt.receiptOfMessageID = receipt_of_message_id
-  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
+  const typing = ReturnEmptyObject('typing')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt, typing)
 }
 
 export default SendMessageReceipt

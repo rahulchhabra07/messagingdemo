@@ -24,6 +24,7 @@ function ReturnEmptyObject(module_name) {
     case 'forwarded':
       return {
         isForwarded: false,
+        forwardedMessageID: '-1'
       }
     case 'like':
       return {
@@ -38,6 +39,10 @@ function ReturnEmptyObject(module_name) {
         receipt_type: 'None',
         receipt_timestamp: "-1",
         receiptOfMessageID: '-1'
+      }
+    case 'typing':
+      return {
+        isTyping: false,
       }
   }
 }

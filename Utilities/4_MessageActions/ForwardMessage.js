@@ -9,7 +9,7 @@ global.atob = base64.decode;
 import ReturnEmptyObject from '../ReturnEmptyObject'
 import SendMessage from '../4_MessageActions/SendMessage'
 
-function ForwardMessage(xmpp, to, message_body) {
+function ForwardMessage(xmpp, to, message_body, forwarded_message_id) {
   const basic = ReturnEmptyObject('basic')
   basic.to = to
   basic.message_body = message_body
@@ -17,9 +17,11 @@ function ForwardMessage(xmpp, to, message_body) {
   const reply = ReturnEmptyObject('reply')
   const forwarded = ReturnEmptyObject('forwarded')
   forwarded.isForwarded = true
+  forwarded.forwardedMessageID = forwarded_message_id
   const like = ReturnEmptyObject('like')
   const receipt = ReturnEmptyObject('receipt')
-  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
+  const typing = ReturnEmptyObject('typing')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt, typing)
 }
 
 export default ForwardMessage

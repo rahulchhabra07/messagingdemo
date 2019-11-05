@@ -21,7 +21,8 @@ function LikeMessage(xmpp, to, like_to_message_id, like_quantity = 1, like_value
   like.like_quantity = like_quantity
   like.like_value = like.like_value
   const receipt = ReturnEmptyObject('receipt')
-  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
+  const typing = ReturnEmptyObject('typing')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt, typing)
 }
 
 export default LikeMessage

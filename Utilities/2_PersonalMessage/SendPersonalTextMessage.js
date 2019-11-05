@@ -18,7 +18,8 @@ function SendPersonalTextMessage(xmpp, to, message_body) {
   const forwarded = ReturnEmptyObject('forwarded')
   const like = ReturnEmptyObject('like')
   const receipt = ReturnEmptyObject('receipt')
-  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
+  const typing = ReturnEmptyObject('typing')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt, typing)
 }
 
 export default SendPersonalTextMessage

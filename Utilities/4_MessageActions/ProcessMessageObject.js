@@ -7,8 +7,7 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-import SendMessageReceivedReceipt from '../4_MessageActions/SendMessageReceivedReceipt'
-import SendMessageReadReceipt from '../4_MessageActions/SendMessageReadReceipt'
+import SendMessageReceipt from '../4_MessageActions/SendMessageReceipt'
 
 /*
 <message
@@ -57,6 +56,7 @@ function ProcessMessageObject(message) {
     const isReply = message.getChild("reply").getChild("isReply").children[0]
     const replyToMessageID = message.getChild("reply").getChild("replyToMessageID").children[0]
     const isForwarded = message.getChild("forwarded").getChild("isForwarded").children[0]
+    const forwardedMessageID = message.getChild("forwarded").getChild("forwardedMessageID").children[0]
     const isLike = message.getChild("like").getChild("isLike").children[0]
     const likeToMessageID = message.getChild("like").getChild("likeToMessageID").children[0]
     const like_quantity = message.getChild("like").getChild("like_quantity").children[0]
@@ -64,6 +64,7 @@ function ProcessMessageObject(message) {
     const isReceipt = message.getChild("receipt").getChild("isReceipt").children[0]
     const receipt_type = message.getChild("receipt").getChild("receipt_type").children[0]
     const receipt_timestamp = message.getChild("receipt").getChild("receipt_timestamp").children[0]
+    const isTyping = message.getChild("typing").getChild("isTyping").children[0]
 
     return {
       basic: {
@@ -84,6 +85,7 @@ function ProcessMessageObject(message) {
       },
       forwarded: {
         isForwarded,
+        forwardedMessageID
       },
       like: {
         isLike,
@@ -95,6 +97,9 @@ function ProcessMessageObject(message) {
         isReceipt,
         receipt_type,
         receipt_timestamp
+      },
+      typing: {
+        isTyping,
       }
     }
 }
