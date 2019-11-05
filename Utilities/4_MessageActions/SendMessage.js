@@ -30,6 +30,7 @@ function SendPersonalTextMessage(xmpp, basic, media, reply, forwarded, like, rec
       </reply>
       <forwarded>
         <isForwarded>{forwarded.isForwarded}</isForwarded>
+        <forwardedMessageID>{forwarded.forwardedMessageID}</forwardedMessageID>
       </forwarded>
       <like>
         <isLike>{like.isLike}</isLike>
@@ -43,6 +44,9 @@ function SendPersonalTextMessage(xmpp, basic, media, reply, forwarded, like, rec
         <receipt_timestamp>{receipt.receipt_timestamp}</receipt_timestamp>
         <receiptOfMessageID>{receipt.receipt_of_message_id}</receiptOfMessageID>
       </receipt>
+      <typing>
+        <isTyping>{typing.isTyping}</isTyping>
+      </typing>
     </message>
   )
   // console.log(message)
