@@ -27,44 +27,9 @@ global.btoa = base64.encode;
 global.atob = base64.decode;
 
 var xmpp = CreateClient('rahul', 'rahultesting')
-// const xmppa = CreateClient('admin', 'admintesting')
-// const xmppr = CreateClient('rahul', 'rahultesting')
+const xmppa = CreateClient('admin', 'admintesting')
+const xmppr = CreateClient('rahul', 'rahultesting')
 
-xmpp.on('error', (err) => {
-  console.error('❌', err.toString())
-})
-
-xmpp.on('offline', () => {
-  console.log('⏹', 'offline')
-})
-
-xmpp.on('stanza', async (stanza) => {
-  console.log('▶', stanza.toString())
-  if (stanza.is('message')) {
-    HandleReceivedMessage(xmpp, stanza)
-  }
-  if (stanza.is('iq')) {
-    HandleReceivedIQ(xmpp, stanza)
-  }
-  if (stanza.is('presence')) {
-    HandleReceivedPresence(xmpp, stanza)
-  }
-})
-
-// Debug
-xmpp.on('status', (status) => {
-  console.debug('🛈', 'status', status)
-})
-xmpp.on('input', (input) => {
-  console.debug('⮈', input)
-})
-xmpp.on('output', (output) => {
-  console.log("Here is the output")
-  console.debug('⮊', output.toString('utf8'))
-  if (output.name === 'message') {
-    console.log("processedmessage: ", ProcessMessageObject(output))
-  }
-})
 
 export default class App extends React.Component {
 
@@ -80,14 +45,50 @@ export default class App extends React.Component {
   //Important
 
   onStartConnect = () => {
-    // if (name === 'admin') {
-    //   xmpp = CreateClient('admin', 'admintesting')
-    // }
-    // if (name === 'rahul') {
-    //   xmpp = CreateClient('rahul', 'rahultesting')
-    // }
+    if (name === 'admin') {
+      xmpp = CreateClient('admin', 'admintesting')
+    }
+    if (name === 'rahul') {
+      xmpp = CreateClient('rahul', 'rahultesting')
+    }
     LoginUser(xmpp)
     //CreateUser(xmpp, 'miraj', 'rahultesting')
+    xmpp.on('error', (err) => {
+      console.error('❌', err.toString())
+    })
+
+    xmpp.on('offline', () => {
+      console.log('⏹', 'offline')
+    })
+
+    xmpp.on('stanza', async (stanza) => {
+      console.log('▶', stanza.toString())
+      if (stanza.is('message')) {
+        HandleReceivedMessage(xmpp, stanza)
+      }
+      if (stanza.is('iq')) {
+        HandleReceivedIQ(xmpp, stanza)
+      }
+      if (stanza.is('presence')) {
+        HandleReceivedPresence(xmpp, stanza)
+      }
+    })
+
+    // Debug
+    xmpp.on('status', (status) => {
+      console.debug('🛈', 'status', status)
+    })
+    xmpp.on('input', (input) => {
+      console.debug('⮈', input)
+    })
+    xmpp.on('output', (output) => {
+      console.log("Here is the output")
+      console.debug('⮊', output.toString('utf8'))
+      if (output.name === 'message') {
+        console.log("processedmessage: ", ProcessMessageObject(output))
+      }
+    })
+
   }
 
   onSendMessage = () => {

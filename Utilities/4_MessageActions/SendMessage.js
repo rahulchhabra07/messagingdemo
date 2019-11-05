@@ -9,7 +9,7 @@ global.atob = base64.decode;
 
 import GenerateUUID from '../GenerateUUID'
 
-function SendPersonalTextMessage(xmpp, basic, media, reply, forwarded, like, receipt, typing) {
+function SendMessage(xmpp, basic, media, reply, forwarded, like, receipt, typing) {
   const stamp = time.datetime()
   const my_jid = xmpp.jid._local + '@' + xmpp.jid._domain + '/' + xmpp.jid._resource
   const message = (
@@ -54,4 +54,4 @@ function SendPersonalTextMessage(xmpp, basic, media, reply, forwarded, like, rec
   console.log("Message sent")
 }
 
-export default SendPersonalTextMessage
+export default SendMessage
