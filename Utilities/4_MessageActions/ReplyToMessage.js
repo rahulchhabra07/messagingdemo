@@ -6,19 +6,21 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-import GenerateUUID from '../GenerateUUID'
+import ReturnEmptyObject from '../ReturnEmptyObject'
+import SendMessage from '../4_MessageActions/SendMessage'
 
-function ReplyToMessage(xmpp, to, message_body, message_id) {
-  const message = (
-    <message
-        id={GenerateUUID(to, message_body)}
-        type='chat'
-        to={to}>
-      <body>{message_body}</body>
-      <replyTo>{message_id}</replyTo>
-    </message>
-  )
-  xmpp.send(message)
+function ReplyToMessage(xmpp, to, message_body, reply_to_message_id) {
+  const basic = ReturnEmptyObject('basic')
+  basic.to = to
+  basic.message_body = message_body
+  const media = ReturnEmptyObject('media')
+  const reply = ReturnEmptyObject('reply')
+  reply.isReply = true
+  reply.replyToMessageID = reply_to_message_id
+  const forwarded = ReturnEmptyObject('forwarded')
+  const like = ReturnEmptyObject('like')
+  const receipt = ReturnEmptyObject('receipt')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
 }
 
 export default ReplyToMessage

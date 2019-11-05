@@ -1,25 +1,26 @@
 /** @jsx xml */
 
 const {client, xml, jid} = require('@xmpp/client')
-const time = require('@xmpp/time')
 
 var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-import GenerateUUID from '../GenerateUUID'
+import ReturnEmptyObject from '../ReturnEmptyObject'
+import SendMessage from '../4_MessageActions/SendMessage'
 
 function SendPersonalMediaMessage(xmpp, to, message_body, media_link) {
-  const message = (
-    <message
-        id={GenerateUUID(to, message_body)}
-        type='chat'
-        to={to}>
-      <body>{message_body}</body>
-      <link>{media_link}</link>
-    </message>
-  )
-  xmpp.send(message)
+  const basic = ReturnEmptyObject('basic')
+  basic.to = to
+  basic.message_body = message_body
+  const media = ReturnEmptyObject('media')
+  media.isMedia = true
+  media.media_link = media_link
+  const reply = ReturnEmptyObject('reply')
+  const forwarded = ReturnEmptyObject('forwarded')
+  const like = ReturnEmptyObject('like')
+  const receipt = ReturnEmptyObject('receipt')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
 }
 
 export default SendPersonalMediaMessage

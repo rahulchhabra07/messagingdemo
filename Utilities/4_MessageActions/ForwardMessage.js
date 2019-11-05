@@ -6,19 +6,20 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-import GenerateUUID from '../GenerateUUID'
+import ReturnEmptyObject from '../ReturnEmptyObject'
+import SendMessage from '../4_MessageActions/SendMessage'
 
 function ForwardMessage(xmpp, to, message_body) {
-  const message = (
-    <message
-        id={GenerateUUID(to, message_body)}
-        type='chat'
-        to={to}>
-      <body>{message_body}</body>
-      <isForwarded>True</isForwarded>
-    </message>
-  )
-  xmpp.send(message)
+  const basic = ReturnEmptyObject('basic')
+  basic.to = to
+  basic.message_body = message_body
+  const media = ReturnEmptyObject('media')
+  const reply = ReturnEmptyObject('reply')
+  const forwarded = ReturnEmptyObject('forwarded')
+  forwarded.isForwarded = true
+  const like = ReturnEmptyObject('like')
+  const receipt = ReturnEmptyObject('receipt')
+  SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
 }
 
 export default ForwardMessage

@@ -7,8 +7,7 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-import SendMessageReceivedReceipt from '../4_MessageActions/SendMessageReceivedReceipt'
-import SendMessageReadReceipt from '../4_MessageActions/SendMessageReadReceipt'
+import SendMessageReceipt from '../4_MessageActions/SendMessageReceipt'
 import ProcessMessageObject from '../4_MessageActions/ProcessMessageObject'
 
 function HandleReceivedMessage(xmpp, message) {
@@ -25,7 +24,7 @@ function HandleReceivedMessage(xmpp, message) {
     console.log(stamp)
     console.log(id)
     receipt_stamp = time.datetime()
-    // SendMessageReceivedReceipt(xmpp, id, from, receipt_stamp)
+    // SendMessageReceipt(xmpp, id, from, receipt_stamp)
     // SendMessageReadReceipt(xmpp, id, from, receipt_stamp)
     const return_object = ProcessMessageObject(message)
     console.log(return_object)

@@ -10,7 +10,7 @@ global.atob = base64.decode;
 import ReturnEmptyObject from '../ReturnEmptyObject'
 import SendMessage from './SendMessage'
 
-function SendMessageReadReceipt(xmpp, to, receipt_type, receipt_of_message_id) {
+function SendMessageReceipt(xmpp, to, receipt_type, receipt_of_message_id) {
   const basic = ReturnEmptyObject('basic')
   basic.to = to
   const media = ReturnEmptyObject('media')
@@ -25,4 +25,4 @@ function SendMessageReadReceipt(xmpp, to, receipt_type, receipt_of_message_id) {
   SendMessage(xmpp, basic, media, reply, forwarded, like, receipt)
 }
 
-export default SendMessageReadReceipt
+export default SendMessageReceipt
