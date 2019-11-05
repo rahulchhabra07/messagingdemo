@@ -26,9 +26,9 @@ var base64 = require('base-64');
 global.btoa = base64.encode;
 global.atob = base64.decode;
 
-var xmpp; = CreateClient('rahul', 'rahultesting')
-const xmppa = CreateClient('admin', 'admintesting')
-const xmppr = CreateClient('rahul', 'rahultesting')
+var xmpp = CreateClient('rahul', 'rahultesting')
+// const xmppa = CreateClient('admin', 'admintesting')
+// const xmppr = CreateClient('rahul', 'rahultesting')
 
 xmpp.on('error', (err) => {
   console.error('❌', err.toString())
@@ -79,13 +79,13 @@ export default class App extends React.Component {
 
   //Important
 
-  onStartConnect = (name = 'admin') => {
-    if (name === 'admin') {
-      xmpp = CreateClient('admin', 'admintesting')
-    }
-    if (name === 'rahul') {
-      xmpp = CreateClient('rahul', 'rahultesting')
-    }
+  onStartConnect = () => {
+    // if (name === 'admin') {
+    //   xmpp = CreateClient('admin', 'admintesting')
+    // }
+    // if (name === 'rahul') {
+    //   xmpp = CreateClient('rahul', 'rahultesting')
+    // }
     LoginUser(xmpp)
     //CreateUser(xmpp, 'miraj', 'rahultesting')
   }
@@ -107,17 +107,10 @@ export default class App extends React.Component {
     var buttons = (
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() => this.onStartConnect('admin')}
+          onPress={() => this.onStartConnect()}
           style={styles.button}>
           <Text style={styles.buttonText}>
-              Login as Admin
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => this.onStartConnect('rahul')}
-          style={styles.button}>
-          <Text style={styles.buttonText}>
-              Login as Rahul
+              Login
           </Text>
         </TouchableHighlight>
         <TouchableHighlight
