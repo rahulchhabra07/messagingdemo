@@ -97,7 +97,7 @@ function ProcessMessageObject(message) {
       receipt: {
         isReceipt,
         receipt_type,
-        receiptOfMessageID,
+        receipt_of_message_id,
         receipt_timestamp
       },
       typing: {
