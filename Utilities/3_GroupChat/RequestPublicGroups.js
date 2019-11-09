@@ -9,10 +9,20 @@ global.atob = base64.decode;
 function RequestPublicGroups(xmpp) {
   const {iqCaller} = xmpp
   const iq = (
+    // <iq
+    //   to='bitspilani.getassist.app'
+    //   type='get'>
+    //   <query xmlns='http://jabber.org/protocol/disco#items'/>
+    // </iq>
+    // <iq
+    //   to='bitspilani.getassist.app'
+    //   type='get'>
+    //   <query xmlns='http://jabber.org/protocol/disco#info'/>
+    // </iq>
     <iq
-      to='bitspilani.getassist.app'
+      to='test1@bitspilani.getassist.app'
       type='get'>
-      <query xmlns='http://jabber.org/protocol/disco#items'/>
+      <query xmlns='http://jabber.org/protocol/disco#info'/>
     </iq>
   )
   const response = iqCaller.request(iq)

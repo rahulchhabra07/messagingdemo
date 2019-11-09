@@ -63,6 +63,7 @@ function ProcessMessageObject(message) {
     const like_value = message.getChild("like").getChild("like_value").children[0]
     const isReceipt = message.getChild("receipt").getChild("isReceipt").children[0]
     const receipt_type = message.getChild("receipt").getChild("receipt_type").children[0]
+    const receipt_of_message_id = message.getChild("receipt").getChild("receiptOfMessageID").children[0]
     const receipt_timestamp = message.getChild("receipt").getChild("receipt_timestamp").children[0]
     const isTyping = message.getChild("typing").getChild("isTyping").children[0]
 
@@ -96,6 +97,7 @@ function ProcessMessageObject(message) {
       receipt: {
         isReceipt,
         receipt_type,
+        receiptOfMessageID,
         receipt_timestamp
       },
       typing: {

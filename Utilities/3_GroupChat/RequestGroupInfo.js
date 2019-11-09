@@ -9,8 +9,7 @@ global.atob = base64.decode;
 function RequestGroupInfo(xmpp, group_name) {
   const {iqCaller} = xmpp
   const iq = (
-    <iq from='hag66@shakespeare.lit/pda'
-      id='ik3vs715'
+    <iq
       to={group_name + '@bitspilani.getassist.app'}
       type='get'>
       <query xmlns='http://jabber.org/protocol/disco#info'/>

@@ -15,6 +15,9 @@ import HandleReceivedPresence from './Utilities/5_HandleReceivedStanzas/HandleRe
 import CreateGroup from './Utilities/3_GroupChat/CreateGroup'
 import RequestPublicGroups from './Utilities/3_GroupChat/RequestPublicGroups'
 import RequestGroupMembersList from './Utilities/3_GroupChat/RequestGroupMembersList'
+import JoinGroup from './Utilities/3_GroupChat/JoinGroup'
+import SubscribeGroup from './Utilities/3_GroupChat/SubscribeGroup'
+import SendGroupMessage from './Utilities/3_GroupChat/SendGroupMessage'
 
 import ProcessMessageObject from './Utilities/4_MessageActions/ProcessMessageObject'
 
@@ -44,12 +47,18 @@ export default class App extends React.Component {
 
   //Important
 
-  onStartConnect = () => {
+  onStartConnect = (name = 'admin') => {
     if (name === 'admin') {
       xmpp = CreateClient('admin', 'admintesting')
     }
     if (name === 'rahul') {
       xmpp = CreateClient('rahul', 'rahultesting')
+    }
+    if (name === 'user1') {
+      xmpp = CreateClient('user1', 'user1testing')
+    }
+    if (name === 'user2') {
+      xmpp = CreateClient('user2', 'user2testing')
     }
     LoginUser(xmpp)
     //CreateUser(xmpp, 'miraj', 'rahultesting')
@@ -81,13 +90,13 @@ export default class App extends React.Component {
     xmpp.on('input', (input) => {
       console.debug('⮈', input)
     })
-    xmpp.on('output', (output) => {
-      console.log("Here is the output")
-      console.debug('⮊', output.toString('utf8'))
-      if (output.name === 'message') {
-        console.log("processedmessage: ", ProcessMessageObject(output))
-      }
-    })
+    // xmpp.on('output', (output) => {
+    //   console.log("Here is the output")
+    //   console.debug('⮊', output.toString('utf8'))
+    //   if (output.name === 'message') {
+    //     console.log("processedmessage: ", ProcessMessageObject(output))
+    //   }
+    // })
 
   }
 
@@ -97,9 +106,12 @@ export default class App extends React.Component {
   }
 
   onGroupChat = () => {
-    CreateGroup(xmpp, "test")
+    // CreateGroup(xmpp, "test1")
     // RequestPublicGroups(xmpp)
-    RequestGroupMembersList(xmpp, "test@bitspilani.getassist.app")
+    // RequestGroupMembersList(xmpp, "test1@bitspilani.getassist.app")
+    // JoinGroup(xmpp, "test")
+    // SubscribeGroup(xmpp, "test1")
+    SendGroupMessage(xmpp, "test1@bitspilani.getassist.app", 'It is')
   }
 
 
@@ -108,10 +120,31 @@ export default class App extends React.Component {
     var buttons = (
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() => this.onStartConnect()}
+          onPress={() => this.onStartConnect('rahul')}
           style={styles.button}>
           <Text style={styles.buttonText}>
-              Login
+              Login as Rahul
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.onStartConnect('admin')}
+          style={styles.button}>
+          <Text style={styles.buttonText}>
+              Login as admin
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.onStartConnect('user1')}
+          style={styles.button}>
+          <Text style={styles.buttonText}>
+              Login as User 1
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.onStartConnect('user2')}
+          style={styles.button}>
+          <Text style={styles.buttonText}>
+              Login as User 2
           </Text>
         </TouchableHighlight>
         <TouchableHighlight

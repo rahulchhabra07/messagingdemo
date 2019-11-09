@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 2588,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 14244,
+  "expoServerNgrokUrl": "https://fw-x7i.miraj98.messagingdemo.exp.direct",
+  "packagerNgrokUrl": "https://packager.fw-x7i.miraj98.messagingdemo.exp.direct",
+  "ngrokPid": 14275
 }

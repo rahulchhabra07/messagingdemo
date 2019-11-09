@@ -37,16 +37,16 @@ function SetNewGroupSettings(xmpp, jid) {
           <query xmlns='http://jabber.org/protocol/muc#owner'>
             <x xmlns='jabber:x:data' type='submit'>
               <title>
-                Configuration of room test@bitspilani.getassist.app
+                Configuration of room test1@bitspilani.getassist.app
               </title>
               <field var='FORM_TYPE'>
                 <value>http://jabber.org/protocol/muc#roomconfig</value>
               </field>
               <field type='text-single' label='Room title' var='muc#roomconfig_roomname'>
-                <value>Test</value>
+                <value>Test1</value>
               </field>
               <field type='text-single' label='Room description' var='muc#roomconfig_roomdesc'>
-                <value>Test Description</value>
+                <value>Test1 Description</value>
               </field>
               <field type='boolean' label='Make room persistent' var='muc#roomconfig_persistentroom'>
                 <value>1</value>
@@ -104,7 +104,7 @@ function SetNewGroupSettings(xmpp, jid) {
               <field type='boolean' label='Allow visitors to send voice requests' var='muc#roomconfig_allowvoicerequests'>
                 <value>1</value>
               </field><field type='boolean' label='Allow subscription' var='muc#roomconfig_allow_subscription'>
-                <value>0</value>
+                <value>1</value>
               </field>
               <field type='text-single' label='Minimum interval between voice requests (in seconds)' var='muc#roomconfig_voicerequestmininterval'>
                 <value>1</value>
